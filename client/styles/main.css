@@ -1,0 +1,18 @@
+#searchBar {
+  margin: 15px 10px;
+}
+
+.tableWrapper {
+  max-height: 400px;
+  overflow: auto;
+}
+
+body {
+  background-color: lightgreen;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+
