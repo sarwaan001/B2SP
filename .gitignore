@@ -2,7 +2,10 @@
 .DS_Store
 
 #Best practice is to *not* include external libraries, etc., but for class and this Bootcamp assignment,
-#we are going to include them with your submission
+#we are going to include them with your 
+
+# Node
+node_modules
 
 
 #Best practice is to *not* include your config.js file on a remote repo, but for grading, 

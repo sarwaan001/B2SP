@@ -3,7 +3,7 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb://pedrosicilia:testing123@ds055690.mlab.com:55690/bootcamp3-pedrosicilia', //place the URI of your mongo database here.
+    uri: '', //place the URI of your mongo database here.
   }, 
   port: 8080
 };
