@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+
+
+
+<html>
+
+    <style>
+        body {
+          font-family: "Lato", sans-serif;
+        }
+        
+        .sidenav {
+          height: 100%;
+          width: 160px;
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          background-color: #111;
+          overflow-x: hidden;
+          padding-top: 20px;
+        }
+        
+        .sidenav a {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+        }
+        
+        .sidenav a:hover {
+          color: #f1f1f1;
+        }
+        
+        .main {
+          margin-left: 160px; /* Same as the width of the sidenav */
+          font-size: 28px; /* Increased text to enable scrolling */
+          padding: 0px 10px;
+        }
+        
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+        </style>
+
+
+
+
+
+  <head>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="loginCSS.css">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Twitter Metrics Service</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+            </ul>
+          </div>
+        </nav>
+
+
+
+  </head>
+  <body>
+
+    
+      <div class="login-page">
+          <div class="form">
+              <img src="https://image.flaticon.com/icons/png/512/23/23931.png" class="TMSLogo">
+            <form class="login-form">
+              <input type="text" placeholder="username"/>
+              <input type="password" placeholder="password"/>
+              <button>login</button>
+              <p class="message">Not registered? <a href="./signup.html">Create an account</a></p>
+            </form>
+
+
+
+
+          </div>
+        </div>
+
+
+
+  
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factories/listingFactory.js"></script>
+    <script src="js/controllers/listingController.js"></script>
+  </body>
+</html>
