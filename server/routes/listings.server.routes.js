@@ -7,18 +7,14 @@ var listings = require('../controllers/listings.server.controller.js'),
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
-router.route('/')
-  .get(listings.list)
-  .post(listings.create);
-
+router.route('/search')
+  .get(listings.readSearch)
 
 /*
   The ':' specifies a URL parameter. 
  */
-router.route('/:listingId')
-  .get(listings.read)
-  .put(listings.update)
-  .delete(listings.delete);
+router.route('/trends')
+  .get(listings.readTrends)
 
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle 

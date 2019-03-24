@@ -1,8 +1,10 @@
 
 /* Dependencies */
 var mongoose = require('mongoose'), 
-    Listing = require('../models/listings.server.model.js');
-
+  Listing = require('../models/listings.server.model.js');
+var Twit = require('twit');
+var config = require('../config/config');
+var ourTwit = new Twit(config);
 /*
   In this file, you should use Mongoose queries in order to retrieve/add/remove/update listings.
   On an error you should send a 404 status code, as well as the error message. 
@@ -31,9 +33,83 @@ exports.create = function(req, res) {
 };
 
 /* Show the current listing */
-exports.read = function(req, res) {
-  /* send back the listing as json from the request */
-  res.json(req.listing);
+exports.readSearch = function(req, res) {
+  var params = {
+    q: 'Christmas',
+    count: 10,
+    result_type: 'popular'
+  }
+
+  ourTwit.get('search/tweets', params, dataReceived);
+
+  function dataReceived(err, data, response)
+  {   
+    if(err)
+    {
+      console.log(err);
+    }
+    else
+    {
+      var tweetsArray = [];
+      for(let i = 0; i < data.statuses.length; i++)
+      {
+        var tweet = {
+          created_at: data.statuses[i].created_at, 
+          text: data.statuses[i].text, 
+          name: data.statuses[i].user.name,
+          screen_name: data.statuses[i].user.screen_name, 
+          followers_count: data.statuses[i].user.followers_count, 
+          friends_count: data.statuses[i].user.friends_count, 
+          retweet_count: data.statuses[i].retweet_count, 
+          favorite_count: data.statuses[i].favorite_count
+        }
+        tweetsArray.push(tweet);           
+      } 
+    }       
+    res.send(tweetsArray);    
+  };   
+};
+
+exports.readTrends = function(req, res)
+{
+  var params = {
+    /*Below woeid is for Miami for testing purposes. Returns top 50 trends in location
+    (we will need to pass in woeid of location searched for by user)*/
+    id: '2450022'
+    //id: woeid
+  }
+
+  ourTwit.get('trends/place', params, dataReceived);
+  
+  function dataReceived(err, data, response)
+  {
+    var trendsArray = [];
+    if(err)
+    {
+      console.log(err);
+    }
+    else
+    {
+      for(let i = 0; i < data[0].trends.length; i++)
+      {
+        var trendsInfo = {
+          name: data[0].trends[i].name, 
+          query: data[0].trends[i].query, 
+          tweet_volume: data[0].trends[i].tweet_volume
+        }
+        if(data[0].trends[i].tweet_volume == null)
+        {
+          continue;
+        }
+        else
+        {
+            trendsArray.push(trendsInfo);
+        }
+        //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
+      }
+    }
+    res.send(trendsArray);
+  };
 };
 
 /* Update a listing */
