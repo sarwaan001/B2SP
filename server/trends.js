@@ -1,6 +1,6 @@
 var Twit = require('twit');
 
-var config = require('./server/config/config');
+var config = require('./config/config');
 
 var twitObject = new Twit(config);
 
