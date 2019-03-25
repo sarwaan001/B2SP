@@ -7,6 +7,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       console.log('Unable to retrieve listings:', error);
     });
 
+
     $scope.detailedInfo = undefined;
 
     $scope.addListing = function() {

@@ -34,8 +34,10 @@ exports.create = function(req, res) {
 
 /* Show the current listing */
 exports.readSearch = function(req, res) {
+  
+  console.log(req.query.searchText);
   var params = {
-    q: 'Christmas',
+    q: req.query.searchText,
     count: 10,
     result_type: 'popular'
   }
