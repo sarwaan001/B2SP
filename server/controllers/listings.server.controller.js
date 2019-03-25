@@ -74,10 +74,12 @@ exports.readSearch = function(req, res) {
 
 exports.readTrends = function(req, res)
 {
+  console.log(req.query.searchText);
   var params = {
     /*Below woeid is for Miami for testing purposes. Returns top 50 trends in location
     (we will need to pass in woeid of location searched for by user)*/
-    id: '2450022'
+    id: req.query.searchText
+    //id: '2450022'
     //id: woeid
   }
 
