@@ -35,11 +35,12 @@ exports.create = function(req, res) {
 /* Show the current listing */
 exports.readSearch = function(req, res) {
   
-  console.log(req.query.searchText);
+  console.log("This is the query: " + req.query.searchText);
+  console.log("This is the result_type: " + req.query.resultType);
   var params = {
     q: req.query.searchText,
     count: 10,
-    result_type: 'popular'
+    result_type: req.query.resultType
   }
 
   ourTwit.get('search/tweets', params, dataReceived);

@@ -75,11 +75,17 @@
               </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0" method="GET" action="/api/search">
+            
+            <form class="form-inline my-2 my-lg-0" method="GET" action="/api/search" id="searchForm">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchText" aria-label="Search">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Tweets</button>
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="/api/trends">Search Trends</button>            
             </form>
+            <select name="resultType" form="searchForm">
+              <option value="popular">Most Popular</option>
+              <option value="recent">Most Recent</option>
+              <option value="mixed">Mixed</option>
+            </select>
             
           </div>
         </nav>
