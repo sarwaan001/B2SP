@@ -3,7 +3,7 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb://twitterapp:b2sp2019@ds121603.mlab.com:21603/twitterusersinfo', //place the URI of your mongo database here.
+    uri: 'mongodb://b2sp:b2sppass@ds227146.mlab.com:27146/twitteruserdata', //place the URI of your mongo database here.
   }, 
   port: 8080,
 

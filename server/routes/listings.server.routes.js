@@ -1,7 +1,9 @@
 /* Dependencies */
 var listings = require('../controllers/listings.server.controller.js'), 
     express = require('express'), 
-    router = express.Router();
+    router = express.Router(),
+    login = require('../controllers/login.server.controller.js');
+    bodyParser = require('body-parser');
 
 /* 
   These method calls are responsible for routing requests to the correct request handler.
@@ -15,7 +17,12 @@ router.route('/search')
  */
 router.route('/trends')
   .get(listings.readTrends)
-
+  
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+router.route('/login').post(login.check);
+router.route('/signup').post(login.create);
+router.route('/users').get(login.getListings);
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle 
   requests with a parameter.

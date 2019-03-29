@@ -78,13 +78,13 @@
           <div class="form">
               <img src="https://image.flaticon.com/icons/png/512/23/23931.png" class="TMSLogo">
               
-            <form class="login-form">
-                <input type="text" placeholder="Email"/>
-                <input type="text" placeholder="Username"/>
-                <input type="password" placeholder="password"/>
+            <form class="login-form" action="/api/signup" method="post">
+                <input type="text" placeholder="Email" name="email">
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="password" name="hash">
 
-                <button>create</button>
-                <p class="message">Already registered? <a href="./login.html">Sign In</a></p>
+                <button type="submit">create</button>
+                <p class="message">Already registered? <a href="/login.html">Sign In</a></p>
               </form>
 
 
