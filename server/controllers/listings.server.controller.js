@@ -69,7 +69,7 @@ exports.readSearch = function(req, res) {
         tweetsArray.push(tweet);           
       } 
     }       
-    res.send(tweetsArray);    
+    res.json(tweetsArray);    
   };   
 };
 
@@ -113,7 +113,7 @@ exports.readTrends = function(req, res)
         //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
       }
     }
-    res.send(trendsArray);
+    res.json(trendsArray);
   };
 };
 
