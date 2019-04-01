@@ -1,21 +1,11 @@
 angular.module('listings', []).factory('Listings', function($http) {
   var methods = {
-    getAll: function() {
-      return $http.get('https://floating-depths-37439.herokuapp.com/api/listings/');
+    getlogin: function(username, hash) {
+      return $http.post(urlBase + '/api/' + username + hash);
     },
 	
-	create: function(listing) {
-	  return $http.post('https://floating-depths-37439.herokuapp.com/api/listings/', listing);
-    }, 
-
-    delete: function(id) {
-	   /**TODO
-        return result of HTTP delete method
-       */
-
-      return $http.delete('https://floating-depths-37439.herokuapp.com/api/listings/' + id);
-
-
+	create: function(email, username, hash) {
+	  return $http.post(urlBase, '/api/' + email + username + hash);
     }
   };
 
