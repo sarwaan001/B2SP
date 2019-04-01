@@ -7,6 +7,40 @@
   overflow: auto;
 }
 
+.searchbox-page {
+  width: 360px;
+  background: white;
+  text-align: center;
+  border-radius: 25px;
+  position: fixed;
+  top: 20%;
+  left: 35%;
+  margin: auto;
+  border: 3px solid green;
+  padding: 10px;
+}
+
+.TMSLogo {
+  width: 50%;
+  height: auto;
+  max-width: 50%;
+}
+
+.typesearch {
+  left: 90%;
+}
+
+.searchbar {
+  margin: 30px 30px 30px;
+  position: center;
+  
+}
+
+.searchbuttons {
+  margin: 30px;
+}
+
+
 body {
   background-color: lightblue;
 }
@@ -14,5 +48,29 @@ body {
 table, th, td {
   border: 1px solid black;
 }
+
+.form {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #beb4b4;
+  width: 100%;
+  border: 5;
+  border-radius: 25px;
+  margin: 0 0 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+
+
 
 
