@@ -70,6 +70,13 @@ table, th, td {
   margin: 0 auto;
 }
 
+.wrapper {
+  margin: 30px 30px 30px;
+}
+
+.goback {
+  margin: 30px 30px 30px;
+}
 
 
 

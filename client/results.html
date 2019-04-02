@@ -9,7 +9,7 @@
         body {
           font-family: "Lato", sans-serif;
         }
-
+        
         .sidenav {
           height: 100%;
           width: 160px;
@@ -21,7 +21,7 @@
           overflow-x: hidden;
           padding-top: 20px;
         }
-
+        
         .sidenav a {
           padding: 6px 8px 6px 16px;
           text-decoration: none;
@@ -29,17 +29,17 @@
           color: #818181;
           display: block;
         }
-
+        
         .sidenav a:hover {
           color: #f1f1f1;
         }
-
+        
         .main {
           margin-left: 160px; /* Same as the width of the sidenav */
           font-size: 28px; /* Increased text to enable scrolling */
           padding: 0px 10px;
         }
-
+        
         @media screen and (max-height: 450px) {
           .sidenav {padding-top: 15px;}
           .sidenav a {font-size: 18px;}
@@ -52,13 +52,13 @@
 
   <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/main.css"> 
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <a class="navbar-brand" href="#">Twitter Metrics Service</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
+        
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -67,20 +67,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="#About">About</a>
               </li>
-                
               <li class="nav-item">
-                <a class="nav-link link" href="./index.html">Logout</a>
+                <a class="nav-link link" href="login.html">Login</a>
               </li>
-              
-              <!--
               <li class="nav-item">
                 <a class="nav-link link" href="#">Sign Up</a>
               </li>
-              -->
 
             </ul>
-
-
+            
+          
+            
           </div>
         </nav>
 
@@ -89,31 +86,14 @@
   </head>
   <body>
 
-    <div class ="searchbox-page">
-    <div class ="searchbar">
-        <img src="https://image.flaticon.com/icons/png/512/23/23931.png" class="TMSLogo">
-         <form class="form-inline my-2 my-lg-0" method="GET" action="/api/search" id="searchForm">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchText" aria-label="Search">
+
+     <div class ="goback">
+        <form>
+            <input type="button" value="Back to Search" onclick="window.location.href='./index.html'" />
+            </form>                  
     </div>
-
-     <div class ="searchbuttons">
-             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Tweets</button>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="/api/trends">Search Trends</button>
-    </form>
-    <div class ="typesearch">
-          <select name="resultType" form="searchForm">
-      <option value="popular">Most Popular</option>
-      <option value="recent">Most Recent</option>
-      <option value="mixed">Mixed</option>
-    </select>
-    </div>
-
-     </div>
-
-
-    </div>
-
-
+ 
+  
 
 
 
