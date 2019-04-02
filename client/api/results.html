@@ -70,8 +70,8 @@
 
    $.getJSON('searchResults.json', function(data) {
        $.each(data.person, function(i, f) {
-          var tblRow = "<tr>" + "<td>" + f.created_at + "</td>" +
-           "<td>" + f.text + "</td>" + "<td>" + f.name + "</td>" + "<td>" + f.screen_name + "</td>" + "</tr>"
+          var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
+           "<td>" + f.text + "</td>" + "<td>" + f.retweet_count + "</td>" + "<td>" + f.created_at + "</td>" + "</tr>"
            $(tblRow).appendTo("#userdata tbody");
      });
 
@@ -94,12 +94,12 @@
 
 <div class="wrapper">
 <div class="profile">
-   <table class="table table-striped table-light table-hover" id= "userdata" border="2">
+   <table class="table table-striped table-light table-hover table-sm" id= "userdata" border="2">
   <thead class="thead-light">
-            <th>Created At</th>
-            <th>Tweet</th>
             <th>Name</th>
-            <th>Screenname</th>
+            <th>Tweet</th>
+            <th>Retweets</th>
+            <th>Created At</th>
         </thead>
       <tbody>
 

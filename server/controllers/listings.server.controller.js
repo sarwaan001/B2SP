@@ -41,7 +41,7 @@ exports.readSearch = function(req, res) {
   console.log("This is the result_type: " + req.query.resultType);
   var params = {
     q: req.query.searchText,
-    count: 3,
+    count: 10,
     result_type: req.query.resultType
   }
 
