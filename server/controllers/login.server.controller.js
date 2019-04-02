@@ -32,7 +32,14 @@ exports.check = function(req, res, next) {
       res.status(404).send();
     }
     else {
-      res.status(200).send(docs);
+      if ((docs == undefined) || (docs.length < 1)) {
+        res.status(404);
+        res.redirect("/DNE.html");
+      }
+      else {
+        res.redirect("/main.html");
+        //res.status(200).send(docs);
+      }
     }  
   });
 };
