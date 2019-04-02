@@ -75,7 +75,7 @@ exports.readSearch = function(req, res) {
     //res.json(tweetsArray);
     res.redirect('./results.html');
     let searchResultsData = JSON.stringify(tweetsArray);
-    fs.writeFileSync('searchResults.json', "{ \"person\": " + searchResultsData + "}");
+    fs.writeFileSync('client/api/searchResults.json', "{ \"person\": " + searchResultsData + "}");
   };
 };
 
