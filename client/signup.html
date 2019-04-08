@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-
-
-
-
 <html>
 
     <style>
         body {
           font-family: "Lato", sans-serif;
         }
-        
+
         .sidenav {
           height: 100%;
           width: 160px;
@@ -21,7 +17,7 @@
           overflow-x: hidden;
           padding-top: 20px;
         }
-        
+
         .sidenav a {
           padding: 6px 8px 6px 16px;
           text-decoration: none;
@@ -29,17 +25,17 @@
           color: #818181;
           display: block;
         }
-        
+
         .sidenav a:hover {
           color: #f1f1f1;
         }
-        
+
         .main {
           margin-left: 160px; /* Same as the width of the sidenav */
           font-size: 28px; /* Increased text to enable scrolling */
           padding: 0px 10px;
         }
-        
+
         @media screen and (max-height: 450px) {
           .sidenav {padding-top: 15px;}
           .sidenav a {font-size: 18px;}
@@ -60,7 +56,7 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -73,15 +69,15 @@
   </head>
   <body>
 
-    
+
       <div class="login-page">
           <div class="form">
               <img src="https://image.flaticon.com/icons/png/512/23/23931.png" class="TMSLogo">
-              
+
             <form class="login-form" action="/api/signup" method="post">
                 <input type="text" placeholder="Email" name="email">
                 <input type="text" placeholder="Username" name="username">
-                <input type="password" placeholder="password" name="hash">
+                <input type="password" placeholder="Password" name="hash">
 
                 <button type="submit">create</button>
                 <p class="message">Already registered? <a href="./index.html">Sign In</a></p>
@@ -95,7 +91,7 @@
 
 
 
-  
+
 
 
 
