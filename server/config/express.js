@@ -38,7 +38,7 @@ module.exports.init = function() {
 
 
   app.all("/*", function(req, res) {
-    res.sendfile(path.resolve("client/login.html"));
+    res.sendfile(path.resolve("client/index.html"));
   });
 
   return app;
