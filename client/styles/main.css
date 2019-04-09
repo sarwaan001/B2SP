@@ -31,7 +31,7 @@
 }
 
 .searchbar {
-  margin: 30px 30px 30px;
+  margin: 10px 60px 10px;
   position: center;
   
 }
@@ -77,7 +77,3 @@ table, th, td {
 .goback {
   margin: 30px 30px 30px;
 }
-
-
-
-
