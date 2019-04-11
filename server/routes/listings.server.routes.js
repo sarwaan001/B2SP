@@ -9,14 +9,16 @@ var listings = require('../controllers/listings.server.controller.js'),
   These method calls are responsible for routing requests to the correct request handler.
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
-router.post('/search', listings.readSearch)
+router.route('/search')
+  .get(listings.readSearch)
 
 router.route('/results')
 
 /*
   The ':' specifies a URL parameter.
  */
-router.post('/trends', listings.readTrends)
+router.route('/trends')
+  .get(listings.readTrends)
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
