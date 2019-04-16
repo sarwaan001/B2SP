@@ -21,9 +21,21 @@
 }
 
 .TMSLogo {
-  width: 50%;
+  width: 100%;
+  margin: auto;
   height: auto;
-  max-width: 50%;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  max-width: 90%;
+}
+
+.navimage {
+  width: auto;
+  height: auto;
+}
+
+.navbar-left {
+    height: auto;
 }
 
 .typesearch {
