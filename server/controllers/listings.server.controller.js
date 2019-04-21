@@ -3,10 +3,13 @@
 /* Dependencies */
 const fs = require('fs');
 var mongoose = require('mongoose'),
-  Listing = require('../models/listings.server.model.js');
+  Listing = require('../models/woeids.js');
 var Twit = require('twit');
 var config = require('../config/config');
 var ourTwit = new Twit(config);
+
+mongoose.connect(config.woeidb.uri);
+var db = mongoose.connection;
 /*
   In this file, you should use Mongoose queries in order to retrieve/add/remove/update listings.
   On an error you should send a 404 status code, as well as the error message.
@@ -15,6 +18,7 @@ var ourTwit = new Twit(config);
   HINT: if you are struggling with implementing these functions, refer back to this tutorial
   from assignment 3 https://scotch.io/tutorials/using-mongoosejs-in-node-js-and-mongodb-applications
  */
+
 
 /* Create a listing */
 exports.create = function(req, res) {
@@ -81,46 +85,80 @@ exports.readSearch = function(req, res) {
 
 exports.readTrends = function(req, res)
 {
-  console.log(req.query.searchText);
-  var params = {
-    /*Below woeid is for Miami for testing purposes. Returns top 50 trends in location
-    (we will need to pass in woeid of location searched for by user)*/
-    id: req.query.searchText
-    //id: '2450022'
-    //id: woeid
-  }
-
-  ourTwit.get('trends/place', params, dataReceived);
-
-  function dataReceived(err, data, response)
+  console.log("Place: " + req.query.searchText);
+  var theWoeid;
+  function findInDb()
   {
-    var trendsArray = [];
-    if(err)
+    return new Promise((resolve, reject) => 
     {
-      console.log(err);
-    }
-    else
-    {
-      for(let i = 0; i < data[0].trends.length; i++)
+      var woeids = db.collection('mywoeids');
+      woeids.find({name: req.query.searchText}).toArray(function(err, result)
       {
-        var trendsInfo = {
-          name: data[0].trends[i].name,
-          query: data[0].trends[i].query,
-          tweet_volume: data[0].trends[i].tweet_volume
-        }
-        if(data[0].trends[i].tweet_volume == null)
+        if(err)
         {
-          continue;
+          reject('Error during db query');
+        } 
+        else
+        {
+          if(typeof result[0] == "undefined")
+          {
+            console.log("Uhoh, place not found!");
+            resolve(null);
+          }
+          else
+          {
+            console.log("Woeid from database: " + (result[0].woeid));
+            theWoeid = result[0].woeid;
+            resolve(theWoeid);
+          }        
+        }     
+      });
+    });
+  }
+  
+  makeTwitCall();
+   
+    async function makeTwitCall()
+    {
+      const response = await findInDb();
+      
+      var params = {
+        // id refers to the woeid that will be passed to API call. Returns top 50 trends in location     
+        id: response
+      }
+
+      ourTwit.get('trends/place', params, dataReceived);
+
+      function dataReceived(err, data, respon)
+      {
+        var trendsArray = [];
+        if(err)
+        {
+          console.log(err);
         }
         else
         {
-            trendsArray.push(trendsInfo);
+          for(let i = 0; i < data[0].trends.length; i++)
+          {
+            var trendsInfo = {
+              name: data[0].trends[i].name,
+              query: data[0].trends[i].query,
+              tweet_volume: data[0].trends[i].tweet_volume
+            }
+            if(data[0].trends[i].tweet_volume == null)
+            {
+              continue;
+            }
+            else
+            {
+                trendsArray.push(trendsInfo);
+            }
+            //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
+          }
         }
-        //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
-      }
-    }
-    res.json(trendsArray);
-  };
+        res.json(trendsArray);
+      };
+    } 
 };
 
 /* Update a listing */
