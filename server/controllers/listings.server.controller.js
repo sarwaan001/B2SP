@@ -107,7 +107,7 @@ exports.readTrends = function(req, res)
           }
           else
           {
-            console.log("Woeid from database: " + (result[0].woeid));
+            console.log("Woeid from db: " + (result[0].woeid));
             theWoeid = result[0].woeid;
             resolve(theWoeid);
           }        
@@ -118,47 +118,47 @@ exports.readTrends = function(req, res)
   
   makeTwitCall();
    
-    async function makeTwitCall()
+  async function makeTwitCall()
+  {
+    const woeid = await findInDb();
+    
+    var params = {
+      // id refers to the woeid that will be passed to API call. Returns top 50 trends in location     
+      id: woeid
+    }
+
+    ourTwit.get('trends/place', params, dataReceived);
+
+    function dataReceived(err, data, respon)
     {
-      const response = await findInDb();
-      
-      var params = {
-        // id refers to the woeid that will be passed to API call. Returns top 50 trends in location     
-        id: response
-      }
-
-      ourTwit.get('trends/place', params, dataReceived);
-
-      function dataReceived(err, data, respon)
+      var trendsArray = [];
+      if(err)
       {
-        var trendsArray = [];
-        if(err)
+        console.log(err);
+      }
+      else
+      {
+        for(let i = 0; i < data[0].trends.length; i++)
         {
-          console.log(err);
-        }
-        else
-        {
-          for(let i = 0; i < data[0].trends.length; i++)
-          {
-            var trendsInfo = {
-              name: data[0].trends[i].name,
-              query: data[0].trends[i].query,
-              tweet_volume: data[0].trends[i].tweet_volume
-            }
-            if(data[0].trends[i].tweet_volume == null)
-            {
-              continue;
-            }
-            else
-            {
-                trendsArray.push(trendsInfo);
-            }
-            //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
+          var trendsInfo = {
+            name: data[0].trends[i].name,
+            query: data[0].trends[i].query,
+            tweet_volume: data[0].trends[i].tweet_volume
           }
+          if(data[0].trends[i].tweet_volume == null)
+          {
+            continue;
+          }
+          else
+          {
+              trendsArray.push(trendsInfo);
+          }
+          //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
         }
-        res.json(trendsArray);
-      };
-    } 
+      }
+      res.json(trendsArray);
+    };
+  } 
 };
 
 /* Update a listing */
