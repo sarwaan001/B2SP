@@ -53,9 +53,7 @@ module.exports.init = function() {
           }
       };
 
-
-
-  app.use("/", express.static("/client", options));
+  app.use("/", express.static("client", options));
 
   //app.use("/")
   //app.use("/public", express.static(__dirname + "/../../public"));
@@ -69,9 +67,10 @@ module.exports.init = function() {
   Go to homepage for all routes not specified */
 
 
-  app.all("*", function(req, res) {
-    res.sendfile(path.resolve("client/index.html"));
+  app.all("/*", function(req, res) {
+    res.sendFile(path.resolve("client/index.html"));
   });
+
 
   return app;
 };
