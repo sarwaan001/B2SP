@@ -81,7 +81,19 @@
             </form>
 
 
-            {{ followers_count }}
+            <body ng-app="twitterMetrics">
+
+
+
+  <!-- Dynamic View -->
+
+  <div ng-controller="listingsController">
+
+    <div ng-view></div>
+
+  </div>
+
+</body>
 
           </div>
         </div>
