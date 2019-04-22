@@ -1,4 +1,5 @@
 angular.module('listings', []).factory('Listings', function($http) {
+  /*
   var methods = {
     getlogin: function(username, hash) {
       return $http.post(urlBase + '/api/' + username + hash);
@@ -10,6 +11,13 @@ angular.module('listings', []).factory('Listings', function($http) {
 
     getAll: function() {
       return $http.get(urlBase, '/api/');
+    }
+  };
+  */
+
+  var methods = {
+    getUser: function(username) {
+      return $http.post(urlBase, '/api/username', username);
     }
   };
 

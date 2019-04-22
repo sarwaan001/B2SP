@@ -2,8 +2,12 @@
 var listings = require('../controllers/listings.server.controller.js'),
     express = require('express'),
     router = express.Router(),
-    login = require('../controllers/login.server.controller.js');
-    bodyParser = require('body-parser');
+    login = require('../controllers/login.server.controller.js'),
+    bodyParser = require('body-parser'),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local').Strategy,
+    { ensureAuthenticated } = require('../config/auth.js'),
+    path = require('path');
 
 /*
   These method calls are responsible for routing requests to the correct request handler.
@@ -22,7 +26,34 @@ router.route('/trends')
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-router.route('/login').post(login.check);
+//router.route('/login').post(login.check);
+/*
+router.post('/login', passport.authenticate('local',  function (req, res) {
+    res.redirect('/main.html');
+});
+*/
+
+router.post('/login', passport.authenticate('local'), function(req, res) {
+    res.render("main.html", { username: req.user.username });
+});
+
+router.post('/login', function(req, res, next) {
+
+    passport.authenticate('local', {
+        successRedirect: '/main.html',
+        failureRedirect: '/index.html',
+        failureFlash: true
+    }) (req, res, next);
+});
+
+router.get('/username', ensureAuthenticated, function(req, res){
+
+
+    //console.log(user);
+    res.send(req.user.username);
+
+});
+
 router.route('/signup').post(login.create);
 router.route('/users').get(login.getListings);
 /*

@@ -52,9 +52,9 @@
 
   <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="/styles/main.css">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="main.html" class="navbar-left"><div class ="navimage"><img src="./images/Logofinal.png" style="width:100px; height:40px;"> </div></a>
+          <a href="main.html" class="navbar-left"><div class ="navimage"><img src="/images/Logofinal.png" style="width:100px; height:40px;"> </div></a>
           <a class="navbar-brand" href="#">Twitter Metrics Service</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -70,7 +70,7 @@
               </li>
                 
               <li class="nav-item">
-                <a class="nav-link link" href="./index.html">Logout</a>
+                <a class="nav-link link" href="../client/index.html">Logout</a>
               </li>
               
               <!--
@@ -92,8 +92,10 @@
 
     <div class ="searchbox-page">
       
-      <img src="./images/Logofinal.png" class="TMSLogo">
-
+      <img src="/images/Logofinal.png" class="TMSLogo">
+      <div class = "usernames">
+        <p>Hello <%= username %>!</p>
+      </div>
     <div class ="searchbar">
          <form class="form-inline my-2 my-lg-0" method="GET" action="/api/search" id="searchForm">
       <input list = "places" class="form-control mr-sm-2" type="search" placeholder="Search" name="searchText" aria-label="Search">
@@ -164,8 +166,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/factories/listingFactory.js"></script>
-    <script src="js/controllers/listingController.js"></script>
+    <script src="../client/js/app.js"></script>
+    <script src="../client/js/factories/listingFactory.js"></script>
+    <script src="../client/js/controllers/listingController.js"></script>
   </body>
 </html>
