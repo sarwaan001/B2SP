@@ -8,13 +8,13 @@ var listings = require('../controllers/listings.server.controller.js'),
     { ensureAuthenticated } = require('../config/auth.js');
 
 
-router.get('/main', ensureAuthenticated, function(req, res){
-    res.sendFile('/main.html');
+router.get('/main', ensureAuthenticated, function(req, res) {
+    res.render('main.html', { username: req.user.username });
 });
 
 router.get('/main.html', ensureAuthenticated, function(req, res) {
-    res.sendFile('/main.html');
-})
+    res.render('main.html', { username: req.user.username });
+});
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.

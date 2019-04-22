@@ -53,6 +53,8 @@ module.exports.init = function() {
           }
       };
 
+  app.use("/", indexjs);
+
   app.use("/", express.static("client", options));
 
   //app.use("/")
