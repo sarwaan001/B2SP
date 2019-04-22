@@ -57,7 +57,7 @@ module.exports.init = function() {
 
   app.use("/", express.static("/client", options));
 
-  app.use("/")
+  //app.use("/")
   //app.use("/public", express.static(__dirname + "/../../public"));
   //basic files
 
