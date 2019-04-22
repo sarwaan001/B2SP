@@ -63,6 +63,11 @@ exports.readSearch = function(req, res) {
 
       for(let i = 0; i < data.statuses.length; i++)
       {
+        var theurl = null;
+        if(data.statuses[i].entities.urls[0] != undefined)
+        {
+          theurl = data.statuses[i].entities.urls[0].url;
+        }      
         var tweet = {
           created_at: data.statuses[i].created_at,
           text: data.statuses[i].text,
@@ -71,7 +76,8 @@ exports.readSearch = function(req, res) {
           followers_count: data.statuses[i].user.followers_count,
           friends_count: data.statuses[i].user.friends_count,
           retweet_count: data.statuses[i].retweet_count,
-          favorite_count: data.statuses[i].favorite_count
+          favorite_count: data.statuses[i].favorite_count,
+          url: theurl 
         }
         tweetsArray.push(tweet);
       }
