@@ -33,7 +33,10 @@ router.post('/login', passport.authenticate('local',  function (req, res) {
 });
 */
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/login', passport.authenticate('local', {
+    failureRedirect: '/err',
+    failureFlash: 'Invalid username or password.'
+}), function(req, res) {
     res.render("main.html", { username: req.user.username });
 });
 

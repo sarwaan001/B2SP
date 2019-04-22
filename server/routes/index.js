@@ -15,6 +15,10 @@ router.get('/main', ensureAuthenticated, function(req, res) {
 router.get('/main.html', ensureAuthenticated, function(req, res) {
     res.render('main.html', { username: req.user.username });
 });
+
+router.get('/err', function(req, res) {
+    res.render('index.html', { Message: 'Username/Password is incorrect.' });
+});
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.
