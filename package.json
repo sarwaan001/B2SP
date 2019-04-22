@@ -1,5 +1,5 @@
 {
-  "name": "Assignment4",
+  "name": "assignment4",
   "version": "1.0.0",
   "description": "Routing server-side requests using ExpressJS",
   "main": "server.js",
@@ -23,5 +23,16 @@
   "devDependencies": {
     "should": "^7.1.1",
     "supertest": "^1.2.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarwaan001/B2SP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sarwaan001/B2SP/issues"
+  },
+  "homepage": "https://github.com/sarwaan001/B2SP#readme"
 }
