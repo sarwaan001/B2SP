@@ -145,11 +145,11 @@ exports.readTrends = function(req, res)
       }
       else
       {
+        console.log(data);
         for(let i = 0; i < data[0].trends.length; i++)
         {
           var trendsInfo = {
             name: data[0].trends[i].name,
-            query: data[0].trends[i].query,
             tweet_volume: data[0].trends[i].tweet_volume
           }
           if(data[0].trends[i].tweet_volume == null)
@@ -163,7 +163,11 @@ exports.readTrends = function(req, res)
           //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
         }
       }
-      res.json(trendsArray);
+      //res.json(trendsArray);
+      console.log(trendsArray);
+      res.redirect('./resultsTrends.html');
+      let searchResultsData = JSON.stringify(trendsArray);
+      fs.writeFileSync('client/api/searchResults.json', "{ \"person\": " + searchResultsData + "}");
     };
   }
 };
