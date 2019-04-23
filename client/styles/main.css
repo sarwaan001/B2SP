@@ -40,10 +40,11 @@
 
 .typesearch {
   left: 90%;
+  margin-top: 10px;
 }
 
 .searchbar {
-  margin: 10px 60px 10px;
+  margin: 0px 12px 10px;
   position: center;
   
 }
