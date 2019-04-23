@@ -71,7 +71,7 @@
    $.getJSON('searchResults.json', function(data) {
        $.each(data.person, function(i, f) {
           var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
-           "<td>" + f.text + "</td>" + "<td>" + f.retweet_count + "</td>" + "<td>" + f.created_at + "</td>" + "</tr>"
+           "<td>" + f.text + "</td>" + "<td>" + f.retweet_count + "</td>" + "<td>" + f.created_at + "</td>" + "<td>" + f.followers_count +"</td>" + "</tr>"
            $(tblRow).appendTo("#userdata tbody");
      });
 
@@ -86,9 +86,9 @@
     <div class ="goback">
         <form>
             <input type="button" value="Back to Search" onclick="window.location.href='/main.html'" />
-            </form>                  
+        </form>
     </div>
- 
+
 
 
 
@@ -100,6 +100,7 @@
             <th>Tweet</th>
             <th>Retweets</th>
             <th>Created At</th>
+            <th>Followers Count</th>
         </thead>
       <tbody>
 
