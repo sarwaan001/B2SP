@@ -8,7 +8,6 @@ var passport = require('passport'),
 
 /*
 passport.use(new LocalStrategy(function (username, password, done) {
-
     function sha256(data) {
         return crypto.createHash("sha256").update(data, "binary").digest("base64");
     }
@@ -27,34 +26,24 @@ passport.use(new LocalStrategy(function (username, password, done) {
             }
         }
     });
-
-
 }));
-
-
-
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
-
 passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
         done(err, user);
     });
 });
-
 var user_cache = {};
-
 passport.serializeUser(function(user, next) {
     let id = user._id;
     user_cache[id] = user;
     next(null, id);
 });
-
 passport.deserializeUser(function(id, next) {
     next(null, user_cache[id]);
 });
-
 */
 
 /*create*/
@@ -67,10 +56,11 @@ exports.create = function(req, res) {
   user.save(function(err) {
     if (err) {
       console.log(err);
-      res.status(404).send();
+      res.status(404);
+      res.render("index.html", { Message: "There was an error signing up" } );
     }
     else {
-      res.redirect("../private/index.html");
+      res.redirect("/createsuccess");
       //res.json(user);
     }
   });
