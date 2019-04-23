@@ -82,6 +82,23 @@
 <script>
 
 
+
+$(function() {
+
+
+
+$.getJSON('searchResults.json', function(data) {
+   $.each(data.person, function(i, f) {
+
+      var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
+       "<td>" + f.tweet_volume + "</td>" + "</tr>"
+       $(tblRow).appendTo("#userdata tbody");
+ });
+
+});
+
+});
+
 </script>
 
 </head>
@@ -132,9 +149,6 @@
        temp.push(f.tweet_volume);
        people.push(temp);
 
-        var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
-         "<td>" + f.tweet_volume + "</td>" + "</tr>"
-         $(tblRow).appendTo("#userdata tbody");
    });
 
  });
