@@ -54,7 +54,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="/styles/main.css">
        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="main.html" class="navbar-left"><div class ="navimage"><img src="/images/Logofinal.png" style="width:100px; height:40px;"> </div></a>
+         <!--  <a href="main.html" class="navbar-left"><div class ="navimage"><img src="/images/Logofinal.png" style="width:100px; height:40px;"> </div></a>  -->
           <a class="navbar-brand" href="#">Twitter Metrics Service</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -72,6 +72,8 @@
               <li class="nav-item">
                 <a class="nav-link link" href="/logout">Logout</a>
               </li>
+
+              
               
               <!--
               <li class="nav-item">
@@ -80,7 +82,10 @@
               -->
 
             </ul>
-
+            
+            <ul class="navbar-nav navbar-brand">  <%= username %>
+            
+            </ul>
 
           </div>
         </nav>
@@ -98,7 +103,7 @@
       </div>
     <div class ="searchbar">
          <form class="form-inline my-2 my-lg-0" method="GET" action="/api/search" id="searchForm">
-      <input list = "places" class="form-control mr-sm-2" type="search" placeholder="Search" name="searchText" aria-label="Search">
+      <input list = "places" class="form-control mr-sm-2" type="search" size="35" placeholder="Search" name="searchText" aria-label="Search">
       <datalist id="places">
         <option value="Phoenix, Arizona"><option value="Sacramento, California"><option value="Denver, Colorado"><option value="Tallahassee, Florida">
         <option value="Atlanta, Georgia"><option value="Honolulu, Hawaii"><option value="Indianapolis, Indiana"><option value="Baton Rouge, Louisiana">
