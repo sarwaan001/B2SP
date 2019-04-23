@@ -85,6 +85,11 @@ table, th, td {
 
 .wrapper {
   margin: 30px 30px 30px;
+  width: 55%;
+}
+
+.wrapper2 {
+  margin: 30px 30px 30px;
 }
 
 .goback {
