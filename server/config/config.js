@@ -2,9 +2,6 @@
 //'config.js' is typically ignored by git to protect sensitive information, such as your database's username and password
 
 module.exports = {
-  db: {
-    uri: 'mongodb://b2sp:b2sppass@ds227146.mlab.com:27146/twitteruserdata', //place the URI of your mongo database here.
-  }, 
   woeidb: {
     uri: 'mongodb://twitterwoeiduser:spring2019@ds157873.mlab.com:57873/twitterwoeidinfo'
   },

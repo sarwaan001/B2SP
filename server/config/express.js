@@ -14,7 +14,7 @@ module.exports.init = function() {
 
   require('./passport')(passport);
   //connect to database
-  mongoose.connect(config.db.uri);
+  mongoose.connect(config.woeidb.uri);
 
   //initialize app
   var app = express();
