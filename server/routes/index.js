@@ -16,6 +16,11 @@ router.get('/main.html', ensureAuthenticated, function(req, res) {
     res.render('main.html', { username: req.user.username });
 });
 
+router.get('/logout', function(req, res){
+    req.logOut();
+    res.render('index.html', { Message: 'Successfully Logged Out.' });
+});
+
 router.get('/err', function(req, res) {
     res.render('index.html', { Message: 'Username/Password is incorrect.' });
 });
