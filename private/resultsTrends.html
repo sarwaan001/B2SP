@@ -37,6 +37,11 @@
       color: #f1f1f1;
     }
 
+    .wrapper {
+      margin: 30px 30px 30px;
+      width: 55%;
+    }
+
     .main {
       margin-left: 160px; /* Same as the width of the sidenav */
       font-size: 28px; /* Increased text to enable scrolling */
@@ -103,27 +108,48 @@
 
       var people = [["Name", "Count"]];
 
-      $(function() {
+      var data2 = <%- JSON.stringify(data).replace(/</g, '\\u003c') %>;
+      console.log(data2);
+
+      if (data2.length > 0) {
+        // iterating through the results array
+        for(var i = 0; i < data2.length; i++) {
+            // get i-th object in the results array
+            var columnsIn = data2[i];
+            // loop through every key in the object
+            var temp = [];
+            for(var key in columnsIn){
+                temp.push(data2[i][key]);
+                console.log(data2[i][key]);
+                // here is your column name you are looking for + its value
+            }
+            people.push(temp);
+        }
+      }
+      else {
+          console.log("No columns");
+      }
 
 
+     //  $(function() {
+     //
+     //
+     //
+     // // $.getJSON('searchResults.json', function(data) {
+     // //     $.each(data.person, function(i, f) {
+     // //       var temp = [];
+     // //       temp.push(f.name);
+     // //       temp.push(f.tweet_volume);
+     // //       people.push(temp);
+     // //
+     // //        // var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
+     // //        //  "<td>" + f.tweet_volume + "</td>" + "</tr>"
+     // //        //  $(tblRow).appendTo("#userdata tbody");
+     // //   });
+     //
+     // });
 
-     $.getJSON('searchResults.json', function(data) {
-         $.each(data.person, function(i, f) {
-           var temp = [];
-           temp.push(f.name);
-           temp.push(f.tweet_volume);
-           people.push(temp);
-
-            // var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
-            //  "<td>" + f.tweet_volume + "</td>" + "</tr>"
-            //  $(tblRow).appendTo("#userdata tbody");
-       });
-
-     });
-
-    });
-
-    console.log(people);
+   // });
 
     // Load google charts
     google.charts.load('current', {'packages':['corechart']});
