@@ -12,7 +12,6 @@ var userSchema = new Schema({
     required: true
   },
   hash: String
-  //salt: String
 });
 
 var Login = mongoose.model('Login', userSchema);
