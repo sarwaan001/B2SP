@@ -67,10 +67,12 @@ exports.create = function(req, res) {
   user.save(function(err) {
     if (err) {
       console.log(err);
-      res.status(404).send();
+      res.status(404);
+      res.render("index.html", { Message: "There was an error signing up" } );
     }
     else {
-      res.json(user);
+      res.redirect("/createsuccess");
+      //res.json(user);
     }
   });
 };

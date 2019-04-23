@@ -24,6 +24,11 @@ router.get('/logout', function(req, res){
 router.get('/err', function(req, res) {
     res.render('index.html', { Message: 'Username/Password is incorrect.' });
 });
+
+router.get('/createsuccess', function(req, res) {
+    res.render('index.html', { Message: 'Account Successfully Created' });
+});
+
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.
