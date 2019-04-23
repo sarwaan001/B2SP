@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
   Listing = require('../models/woeids.js');
 var Twit = require('twit');
 var config = require('../config/config');
-var ourTwit = new Twit(config);
+var ourTwit = require("../models/twitterModel");
 
 mongoose.connect(config.woeidb.uri);
 var db = mongoose.connection;
@@ -67,7 +67,7 @@ exports.readSearch = function(req, res) {
         if(data.statuses[i].entities.urls[0] != undefined)
         {
           theurl = data.statuses[i].entities.urls[0].url;
-        }      
+        }
         var tweet = {
           created_at: data.statuses[i].created_at,
           text: data.statuses[i].text,
@@ -77,13 +77,15 @@ exports.readSearch = function(req, res) {
           friends_count: data.statuses[i].user.friends_count,
           retweet_count: data.statuses[i].retweet_count,
           favorite_count: data.statuses[i].favorite_count,
-          url: theurl 
+          url: theurl
         }
         tweetsArray.push(tweet);
       }
     }
     //res.json(tweetsArray);
-    res.redirect('./results.html');
+    console.log(tweetsArray);
+    //res.redirect('./results.html');
+    res.render('results', { username: req.user.username, data: tweetsArray });
     let searchResultsData = JSON.stringify(tweetsArray);
     fs.writeFileSync('client/api/searchResults.json', "{ \"person\": " + searchResultsData + "}");
   };
@@ -95,7 +97,7 @@ exports.readTrends = function(req, res)
   var theWoeid;
   function findInDb()
   {
-    return new Promise((resolve, reject) => 
+    return new Promise((resolve, reject) =>
     {
       var woeids = db.collection('mywoeids');
       woeids.find({name: req.query.searchText}).toArray(function(err, result)
@@ -103,7 +105,7 @@ exports.readTrends = function(req, res)
         if(err)
         {
           reject('Error during db query');
-        } 
+        }
         else
         {
           if(typeof result[0] == "undefined")
@@ -116,20 +118,20 @@ exports.readTrends = function(req, res)
             console.log("Woeid from db: " + (result[0].woeid));
             theWoeid = result[0].woeid;
             resolve(theWoeid);
-          }        
-        }     
+          }
+        }
       });
     });
   }
-  
+
   makeTwitCall();
-   
+
   async function makeTwitCall()
   {
     const woeid = await findInDb();
-    
+
     var params = {
-      // id refers to the woeid that will be passed to API call. Returns top 50 trends in location     
+      // id refers to the woeid that will be passed to API call. Returns top 50 trends in location
       id: woeid
     }
 
@@ -144,11 +146,11 @@ exports.readTrends = function(req, res)
       }
       else
       {
+        console.log(data);
         for(let i = 0; i < data[0].trends.length; i++)
         {
           var trendsInfo = {
             name: data[0].trends[i].name,
-            query: data[0].trends[i].query,
             tweet_volume: data[0].trends[i].tweet_volume
           }
           if(data[0].trends[i].tweet_volume == null)
@@ -162,9 +164,14 @@ exports.readTrends = function(req, res)
           //^Above if else ensures trends with tweet volume of null aren't added to the trendsArray
         }
       }
-      res.json(trendsArray);
+      //res.json(trendsArray);
+      console.log(trendsArray);
+      //res.redirect('./resultsTrends.html');
+      res.render('resultsTrends', { username: req.user.username, data: trendsArray });
+      let searchResultsData = JSON.stringify(trendsArray);
+      fs.writeFileSync('client/api/searchResults.json', "{ \"person\": " + searchResultsData + "}");
     };
-  } 
+  }
 };
 
 /* Update a listing */

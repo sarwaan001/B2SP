@@ -1,19 +1,20 @@
-var config = require('./config'), 
-    mongoose = require('mongoose'),   
-    express = require('./express');
+
+var config = require('./config'),
+mongoose = require('mongoose'),
+express = require('./express');
 
 module.exports.start = function() {
-  var app = express.init();
-  // noinspection JSAnnotator
-    let port = process.env.PORT;
-  if (port == null || port == "") {
-    port = config.port; }
+var app = express.init();
+// noinspection JSAnnotator
+let port = process.env.PORT;
+if (port == null || port == "") {
+port = config.port; }
 
-    
-  app.listen(port, function() {
-    console.log('App listening on port', port);
-    
-    
-    //console.log('App listening on port', config.port);
-  });
+
+app.listen(port, function() {
+console.log('App listening on port', port);
+
+
+//console.log('App listening on port', config.port);
+});
 };

@@ -16,8 +16,8 @@
   top: 20%;
   left: 35%;
   margin: auto;
-  border: 3px solid green;
   padding: 10px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .TMSLogo {
@@ -46,8 +46,12 @@
 .searchbar {
   margin: 0px 12px 10px;
   position: center;
+<<<<<<< HEAD
   
   
+=======
+
+>>>>>>> BeaBranchSprint3.1
 }
 
 .searchbuttons {
@@ -85,6 +89,11 @@ table, th, td {
 }
 
 .wrapper {
+  margin: 30px 30px 30px;
+  width: 55%;
+}
+
+.wrapper2 {
   margin: 30px 30px 30px;
 }
 

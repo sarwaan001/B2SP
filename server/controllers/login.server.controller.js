@@ -1,4 +1,4 @@
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
   Login = require("../models/users.js");
 var config = require('../config/config');
 var crypto = require('crypto');
@@ -8,7 +8,6 @@ var passport = require('passport'),
 
 /*
 passport.use(new LocalStrategy(function (username, password, done) {
-
     function sha256(data) {
         return crypto.createHash("sha256").update(data, "binary").digest("base64");
     }
@@ -27,34 +26,24 @@ passport.use(new LocalStrategy(function (username, password, done) {
             }
         }
     });
-
-
 }));
-
-
-
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
-
 passport.deserializeUser(function(id, done) {
     User.findById(id, function(err, user) {
         done(err, user);
     });
 });
-
 var user_cache = {};
-
 passport.serializeUser(function(user, next) {
     let id = user._id;
     user_cache[id] = user;
     next(null, id);
 });
-
 passport.deserializeUser(function(id, next) {
     next(null, user_cache[id]);
 });
-
 */
 
 /*create*/
@@ -96,7 +85,7 @@ exports.check = function(req, res, next) {
         res.redirect("/main.html");
         //res.status(200).send(docs);
       }
-    }  
+    }
   });
 };
 

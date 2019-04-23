@@ -66,25 +66,13 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#About">About</a>
-              </li>
-
-              <li class="nav-item">
                 <a class="nav-link link" href="/logout">Logout</a>
               </li>
 
-              
-              
-              <!--
-              <li class="nav-item">
-                <a class="nav-link link" href="#">Sign Up</a>
-              </li>
-              -->
-
             </ul>
-            
+
             <ul class="navbar-nav navbar-brand">  <%= username %>
-            
+
             </ul>
 
           </div>
@@ -96,14 +84,14 @@
   <body>
 
     <div class ="searchbox-page">
-      
+
       <img src="/images/Logofinal.png" class="TMSLogo">
       <div class = "usernames">
         <p>Hello <%= username %>!</p>
       </div>
     <div class ="searchbar">
          <form class="form-inline my-2 my-lg-0" method="GET" action="/api/search" id="searchForm">
-      <input list = "places" class="form-control mr-sm-2" type="search" size="35" placeholder="Search" name="searchText" aria-label="Search">
+      <input list = "places" class="form-control mr-sm-2" type="search" size="30" placeholder="Search" name="searchText" aria-label="Search">
       <datalist id="places">
         <option value="Phoenix, Arizona"><option value="Sacramento, California"><option value="Denver, Colorado"><option value="Tallahassee, Florida">
         <option value="Atlanta, Georgia"><option value="Honolulu, Hawaii"><option value="Indianapolis, Indiana"><option value="Baton Rouge, Louisiana">
@@ -146,7 +134,7 @@
         <option value="Ho Chi Minh City, Vietnam">
     </datalist>
     </div>
-    
+
      <div class ="searchbuttons">
              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search Tweets</button>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" formaction="/api/trends">Search Trends</button>

@@ -58,17 +58,16 @@ router.get('/username', ensureAuthenticated, function(req, res){
 });
 
 router.route('/signup').post(login.create);
+
+
 router.route('/users').get(login.getListings);
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle
   requests with a parameter.
-
   Say we make an example request to '/listings/566372f4d11de3498e2941c9'
-
   The request handler will first find the specific listing using this 'listingsById'
   middleware function by doing a lookup to ID '566372f4d11de3498e2941c9' in the Mongo database,
   and bind this listing to the request object.
-
   It will then pass control to the routing function specified above, where it will either
   get, update, or delete that specific listing (depending on the HTTP verb specified)
  */
