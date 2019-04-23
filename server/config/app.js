@@ -9,6 +9,7 @@ var config = require('./config'),
     listingsRouter = require('../routes/listings.server.routes'),
     indexjs = require('../routes/index.js'),
     passport = require('passport');
+
 var flash = require('connect-flash');
 var { ensureAuthenticated } = require('../config/auth.js');
 
@@ -19,8 +20,6 @@ module.exports.start = function() {
   //connect to database
   mongoose.connect(config.woeidb.uri);
 
-  //initialize app
-  //var app = express();
     var session = require("express-session"),
         bodyParser = require("body-parser");
     app.use(express.static("public"));
@@ -60,9 +59,6 @@ module.exports.start = function() {
 
   app.use("/", express.static("client", options));
 
-  //app.use("/")
-  //app.use("/public", express.static(__dirname + "/../../public"));
-  //basic files
 
   /**TODO
   Use the listings router for requests to the api */
@@ -70,17 +66,15 @@ module.exports.start = function() {
 
   /**TODO
   Go to homepage for all routes not specified */
-
-
   app.all("/*", function(req, res) {
     res.sendFile(path.resolve("client/index.html"));
   });
 
+  //LISTEN TO THE PORT
   let port = process.env.PORT;
   if(port == null || port == "") {
     port = config.port;
   }
-
 
   app.listen(port, function() {
     console.log('App listening on port', port);
