@@ -5,6 +5,10 @@
       font-family: "Lato", sans-serif;
     }
 
+    table {
+      margin: auto;
+    }
+
     .sidenav {
       height: 100%;
       width: 160px;
@@ -23,6 +27,10 @@
       font-size: 25px;
       color: #818181;
       display: block;
+    }
+
+    .rect {
+      align: center;
     }
 
     .sidenav a:hover {
@@ -104,7 +112,7 @@
 </div>
 </div>
 
-<div id="piechart"></div>
+<div id="piechart" class="pie"></div>
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -144,7 +152,7 @@ function drawChart() {
   var data = google.visualization.arrayToDataTable(people);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'My Average Day', 'width':550, 'height':400};
+  var options = {'title':'Distribution of Trends', 'width':550, 'height':400};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
