@@ -60,7 +60,7 @@
 
       </ul>
 
-      <ul class="navbar-nav navbar-brand">  <%= username %>
+      <!-- <ul class="navbar-nav navbar-brand">  <%= username %> -->
 
       </ul>
 
@@ -80,7 +80,7 @@
    $.getJSON('searchResults.json', function(data) {
        $.each(data.person, function(i, f) {
           var tblRow = "<tr>" + "<td>" + f.name + "</td>" +
-           "<td>" + f.text + "</td>" + "<td>" + f.retweet_count + "</td>" + "<td>" + f.created_at + "</td>" + "<td>" + f.followers_count +"</td>" + "</tr>"
+           "<td>" + f.text + "</td>" + "<td>" + "<a href=" +f.url + ">" + f.url + "</a>" + "</td>" + "<td>" + f.followers_count + "</td>" + "<td>" + f.retweet_count + "</td>" + "<td>" + f.created_at +"</td>" + "</tr>"
            $(tblRow).appendTo("#userdata tbody");
      });
 
@@ -110,9 +110,10 @@
   <thead class="thead-light">
             <th>Name</th>
             <th>Tweet</th>
-            <th>Retweets</th>
-            <th>Created At</th>
+            <th>URL</th>
             <th>Followers Count</th>
+            <th>Retweet Count</th>
+            <th>Created At</th>
         </thead>
       <tbody>
 
