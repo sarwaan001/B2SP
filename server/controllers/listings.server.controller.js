@@ -84,7 +84,8 @@ exports.readSearch = function(req, res) {
     }
     //res.json(tweetsArray);
     console.log(tweetsArray);
-    res.redirect('./results.html');
+    //res.redirect('./results.html');
+    res.render('results', { username: req.user.username, data: tweetsArray });
     let searchResultsData = JSON.stringify(tweetsArray);
     fs.writeFileSync('client/api/searchResults.json', "{ \"person\": " + searchResultsData + "}");
   };
@@ -165,7 +166,8 @@ exports.readTrends = function(req, res)
       }
       //res.json(trendsArray);
       console.log(trendsArray);
-      res.redirect('./resultsTrends.html');
+      //res.redirect('./resultsTrends.html');
+      res.render('resultsTrends', { username: req.user.username, data: trendsArray });
       let searchResultsData = JSON.stringify(trendsArray);
       fs.writeFileSync('client/api/searchResults.json', "{ \"person\": " + searchResultsData + "}");
     };

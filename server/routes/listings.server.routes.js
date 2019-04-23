@@ -58,6 +58,8 @@ router.get('/username', ensureAuthenticated, function(req, res){
 });
 
 router.route('/signup').post(login.create);
+
+
 router.route('/users').get(login.getListings);
 /*
   The 'router.param' method allows us to specify middleware we would like to use to handle

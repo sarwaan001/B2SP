@@ -1,4 +1,4 @@
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
   Login = require("../models/users.js");
 var config = require('../config/config');
 var crypto = require('crypto');
@@ -70,7 +70,8 @@ exports.create = function(req, res) {
       res.status(404).send();
     }
     else {
-      res.json(user);
+      res.redirect("../private/index.html");
+      //res.json(user);
     }
   });
 };
@@ -94,7 +95,7 @@ exports.check = function(req, res, next) {
         res.redirect("/main.html");
         //res.status(200).send(docs);
       }
-    }  
+    }
   });
 };
 
