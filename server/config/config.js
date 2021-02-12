@@ -3,9 +3,10 @@
 
 module.exports = {
   woeidb: {
-    uri: 'mongodb://twitterwoeiduser:spring2019@ds157873.mlab.com:57873/twitterwoeidinfo'
+    uri: 'mongodb+srv://HerokuServer:q1nf2KPza2CmV74h@tmsdashboard.a1zwb.mongodb.net/TMSDashBoard?retryWrites=true&w=majority'
   },
   port: 8080,
+
 
   consumer_key: 'kd2Srldv4Z6j5HXdJlHHjeDZu',
   consumer_secret:  'z4NeNEf2uRZBXHvVdlbJWVVelDN4Gz83hyrbBet2w1tC00svX1',
